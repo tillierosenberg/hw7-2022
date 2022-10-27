@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
 
 document.querySelector("#play").addEventListener("click", function() {
 	video.play();
-	// need to update volumne information
+	document.querySelector("#volume").innerHTML = document.querySelector("#slider").value + "%"	// need to update volumne information
 });
 
 document.querySelector("#pause").addEventListener("click", function() {

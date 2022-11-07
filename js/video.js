@@ -1,43 +1,46 @@
 
 
-var video = document.querySelector(".video");
+var video = document.querySelector("#player1");
 
 window.addEventListener("load", function() {
 	console.log("Good job opening the window")
 	video.autoplay = false
 	video.loop = false;
+	console.log("Autoplay is set to " + video.autoplay)
+	console.log("Looping is set to " + video.loop)
 });
 
 
 document.querySelector("#play").addEventListener("click", function() {
 	video.play();
-	document.querySelector("#volume").innerHTML = document.querySelector("#slider").value + "%"	// need to update volumne information
+	document.querySelector("#volume").innerHTML = video.volume * 100 + "%"	
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
+	console.log("Pause Video")
 	video.pause();
 });
 
 document.querySelector("#slower").addEventListener("click", function() {
-	video.playbackRate -= .1
-	console.log(video.playbackRate)
+	video.playbackRate *= .9
+	console.log("Speed is " + video.playbackRate)
 });
 
 
 document.querySelector("#faster").addEventListener("click", function() {
-	video.playbackRate += .1
-	console.log(video.playbackRate)
+	video.playbackRate /= .9
+	console.log("Speed is " + video.playbackRate)
 });
 
 document.querySelector("#skip").addEventListener("click", function() {
-
+	console.log("Skip Ahead")
 	if (video.currentTime < video.duration){
 	video.currentTime += 10
 	console.log(video.currentTime);}
 	else {
 		video.currentTime = 0
 		video.load()
-		console.log(video.currentTime)
+		console.log("Video current time is " + video.currentTime)
 	}
 });
 
